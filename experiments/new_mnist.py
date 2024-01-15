@@ -178,8 +178,8 @@ def consistency_examples(
 
     # Initialize encoder, decoder and autoencoder wrapper
     pert = RandomNoise()
-    encoder = EncoderMnist(encoded_space_dim=dim_latent)
-    decoder = DecoderMnist(encoded_space_dim=dim_latent)
+    encoder = EncoderMnist()
+    decoder = DecoderMnist()
     autoencoder = AutoEncoderMnist(encoder, decoder, dim_latent, pert)
     encoder.to(device)
     decoder.to(device)
