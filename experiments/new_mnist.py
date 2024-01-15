@@ -23,7 +23,7 @@ from lfxai.explanations.examples import (
     TracIn,
 )
 from lfxai.explanations.features import attribute_auxiliary, attribute_individual_dim
-from lfxai.models.new_images import (
+from lfxai.models.newimages import (
     VAE,
     AutoEncoderMnist,
     ClassifierMnist,
