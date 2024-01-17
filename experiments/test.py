@@ -1,2 +1,2 @@
-from VAE import EncoderMnist
+from VAE.Encoder import EncoderMnist
 print("successfully")
