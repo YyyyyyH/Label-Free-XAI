@@ -52,7 +52,7 @@ class EncoderMnist(nn.Module):
     """
 
     def __init__(self, in_dim=1, h_dim=64, n_res_layers=3, res_h_dim=32):
-        super(Encoder, self).__init__()
+        super(EncoderMnist, self).__init__()
         kernel = 4
         stride = 2
         self.conv_stack = nn.Sequential(
