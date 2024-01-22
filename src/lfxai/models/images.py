@@ -72,6 +72,29 @@ class EncoderMnist(nn.Module):
     def forward(self, x):
         return self.conv_stack(x)
 
+class EncoderMnist(nn.Module):
+    def __init__(self, encoded_space_dim):
+        super().__init__()
+        self.encoder_cnn = nn.Sequential(
+            nn.Conv2d(1, 8, 3, stride=2, padding=1),
+            nn.ReLU(True),
+            nn.Conv2d(8, 16, 3, stride=2, padding=1),
+            nn.BatchNorm2d(16),
+            nn.ReLU(True),
+            nn.Conv2d(16, 32, 3, stride=2, padding=0),
+            nn.ReLU(True),
+        )
+        self.flatten = nn.Flatten(start_dim=1)
+        self.encoder_lin = nn.Sequential(
+            nn.Linear(3 * 3 * 32, 128), nn.ReLU(True), nn.Linear(128, encoded_space_dim)
+        )
+        self.encoded_space_dim = encoded_space_dim
+
+    def forward(self, x):
+        x = self.encoder_cnn(x)
+        x = self.flatten(x)
+        x = self.encoder_lin(x)
+        return x
 
 class Decoder(nn.Module):
     """
